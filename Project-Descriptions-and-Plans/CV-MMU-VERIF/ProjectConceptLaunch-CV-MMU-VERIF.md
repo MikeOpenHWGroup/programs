@@ -1,4 +1,4 @@
-# Verification Environment for the CVA6 MMU - Project Concept/Launch Proposal
+# Verification Environment for the CVA6 MMU/PMP - Project Concept/Launch Proposal
 
 **Date of proposal**
 
@@ -17,64 +17,30 @@ Comments and additions by Mike Thompson, OpenHW Foundation
 ### Summary
 
 <!--
-Many applications in the HPC domain (e.g. scientific applications) are
-often memory bound: the performance bottleneck is the memory. It is
-therefore necessary to implement cache subsystems enabling a high memory
-throughput. This is to hide the continuously growing gap between memory
-and processor cores speeds (“Memory Wall”).
+The Memory Management Unit is an important block of processor designs. It helps virtual memory management, address translation and memory protection. 
+The MMU/PMP used in CVA6 is highly configurable and require an extensive verification. We propose a standalone UVM testbench with following features: 
 
-We propose a Level-1 Data Cache (L1 DCACHE) compatible with RISC-V
-processor cores. This L1 DCACHE was successfully integrated with a CVA6
-core (replacing its original DCACHE). However, it should be compatible
-with other cores (with some modifications in the load/store interface of
-this last).
-
-The most important features of the proposed L1 DCACHE are:
-
-  - Hit under multiple misses. Current implementation supports up to 128
-    inflight miss requests to the memory. This feature allows benefiting
-    of the high throughput in new memory technologies (e.g. High
-    Bandwidth Memory or HBM), while hiding the memory latency.
-
-  - Efficient Data RAMs organization to reduce both area and energy
-    consumption.
-
-  - High and flexible bandwidth between the cache and the “requester”. A
-    requester may be the integer pipeline of the core, or any given
-    tightly coupled accelerator.
-
-  - Out-of-order execution of memory operations to avoid unnecessary
-    stalls (complying with RISC-V memory consistency models).
-
-  - Cache Management Operations (CMO) like invalidation or fences.
-
-  - Programmable hardware memory prefetcher for stride memory accesses.
+   - Psuedo Randomly constraint stimulis 
+   - Random and directed tests 
+   - Reusable coponents 
+   - Generation of page table on the fly 
+   - Verification of reset of the fly 
+   - Generic and easy to use compilation and simulation scripts
+   - Verification of USER/Supervisior/Machine Mode
 -->
 
 ### Components
 
 <!--
-  - L1 DCACHE IP.
-
-  - Hardware Memory Prefetcher IP.
-
-  - UVM testbench for standalone (without core) testing of the L1
-    DCACHE.
+  - Main goal of the project is to bring MMU/PMP to TRL 4. 
 -->
 
 ### Deliverables
 
 <!--
-  - Documentation of the L1 DCACHE IP
-
-  - Documentation of the Hardware Memory Prefetcher IP.
-
-  - RTL (SystemVerilog) sources of the L1 DCACHE IP.
-
-  - RTL (SystemVerilog) sources of the Hardware Memory Prefetcher IP.
-
-  - UVM (SystemVerilog) testbench for standalone testing of the L1
-    DCACHE (in a staged approach).
+  - UVM TestBench 
+  - Verification Document
+  - Testplan 
 -->
 
 ## Summary of market or input requirements
@@ -82,86 +48,51 @@ The most important features of the proposed L1 DCACHE are:
 ### Known market/project requirements at PC gate
 
 <!--
-  - Hardware RISCV-based accelerators in the HPC domain.
-
-  - We (CEA) are already using this L1 DCACHE for our custom RISCV-based
-    hardware accelerator: the VRP/VxP (Variable and eXtended precision
-    accelerator). This accelerator (using this L1 DCACHE) will be
-    taped-out in:
-
-      - GlobalFoundaries 22FDX technology in the framework of the
-        European Processor Initiative (EPI) EPAC1.5 test-chip (expected
-        tape-out on August, 2022).
-
-      - TSMC 7nm technology in the framework of the EPI’s RHEA chip
-        (2023 Q1).
+  - 64 bit MMU/PMP verified 
 -->
 
 ### Potential future enhancements
 
 <!--
 Future developments may add features such as
+  - Verification of Hypervision Extension 
 
-  - Support of one or multiple cache-coherency protocols.
-
-  - Memory error correction (ECC) for complying with constraints in
-    critical systems
-
-  - Hybrid write-policy: write-back / write-through.
-
-  - Scratchpad mode (partially or fully). Useful in some embedded
-    systems or even HPC for some accelerators.
-
-  - System testing to be determined by other interested parties.
 -->
 
 ## Who would make use of OpenHW output
 
 <!--
-The proposed L1 DCACHE should be adaptable to any RISC-V processor core
-in HPC domain. Therefore, it could benefit anyone needing a
-high-throughput for memory accesses.
+It will benefit anyone with following requirements: 
+- System Integrators looking for an "Industrial Grade" SV32/SV39 MMU. 
 -->
 
 ## Initial Estimate of Timeline
 
 <!--
-In order to open-source the L1 DCACHE we would like to accomplish the
+In order to open-source the MMU/PMP we would like to accomplish the
 following tasks:
 
-  - Adapt newer versions of the CVA6’s memory interface to the L1
-    DCACHE. Current port was made on Ariane (version from PULP’s github
-    – April 2021). Estimated effort is low: 2 person/month. Estimation
-    is based on analysis of latest CVA6 versions.
+  - Improve Testplan and verification document. Estimated effort is low: 1 person/month.
 
-  - Improve documentation. Estimated effort is low: 1 person/month.
-
-  - Improve the existing UVM verification environment for standalone
-    (without core) testing of the L1 DCACHE. Estimated effort is
+  - Create UVM verification environment for standalone
+    (without core) testing of the MMU/PMP. Estimated effort is
     medium-high: 6 person/month.
+
 -->
 
 ## Explanation of why OpenHW should do this project
 
 <!--
-  - This L1 DCACHE enables high-performance on memory bound applications
-    and it is adaptable to the different RISC-V cores in the OpenHWG
-    Cores-V catalog.
+  - The MMU/PMP bench allows to run and verify different MMU/PMP features stand alone without core. It makes the verification easier and faster. 
 
-  - This project will help to extend the CVA6 ecosystem for next
-    generation of CVA6 cores which need more capable cache.
-
-  - First move for OpenHW into HPC
-
-  - Deepen engagement of key EU research organizations (such as CEA,
-    BSC) with OpenHW projects
+  - Deepen engagement of key EU research organizationn CEA with OpenHW projects
 -->
 
 ## Industry landscape: description of competing, alternative, or related efforts in the industry
 
 <!--
-Hereafter some of the features of other open-source, RISC-V compatible,
-L1 Data Caches.
+Hereafter some of the features of other open-source, MMU verification 
+  - 10xEngineer verification  environnement  
 -->
 
 
@@ -190,10 +121,9 @@ Tanuj-Kumar Khandelwal - Research Engineer - CEA List (Grenoble)<br>
     verification phase approach.
 
   - Meeting with other OpenHWG members/staff to discuss about repository
-    structure, simulation tools, CI, compilation/synthesis flow, RTL
-    freeze checklist and project board.
+    structure, simulation tools.
 
 ### Repository Requirements
 <!--
-  - Separate repository for the L1 DCACHE as it can be used for different cores.
+  - Separate repository for the MMU/PMP Verification as it can be used for different cores.
 -->
