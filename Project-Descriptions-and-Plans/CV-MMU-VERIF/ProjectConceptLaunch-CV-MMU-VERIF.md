@@ -15,8 +15,6 @@ Comments and additions by Mike Thompson, OpenHW Foundation
 ## High Level Summary of project, project components, and deliverables
 
 ### Summary
-
-<!--
 The Memory Management Unit is an important block of processor designs. It helps virtual memory management, address translation and memory protection. 
 The MMU/PMP used in CVA6 is highly configurable and require an extensive verification. We propose a standalone UVM testbench with following features: 
 
@@ -27,73 +25,43 @@ The MMU/PMP used in CVA6 is highly configurable and require an extensive verific
    - Verification of reset of the fly 
    - Generic and easy to use compilation and simulation scripts
    - Verification of USER/Supervisior/Machine Mode
--->
 
 ### Components
-
-<!--
   - Main goal of the project is to bring MMU/PMP to TRL 4. 
--->
 
 ### Deliverables
-
-<!--
   - UVM TestBench 
   - Verification Document
-  - Testplan 
--->
+  - Testplan
 
 ## Summary of market or input requirements
 
 ### Known market/project requirements at PC gate
-
-<!--
-  - 64 bit MMU/PMP verified 
--->
+  - 64 bit MMU/PMP verified
 
 ### Potential future enhancements
-
-<!--
 Future developments may add features such as
   - Verification of Hypervision Extension 
 
--->
-
 ## Who would make use of OpenHW output
-
-<!--
 It will benefit anyone with following requirements: 
-- System Integrators looking for an "Industrial Grade" SV32/SV39 MMU. 
--->
+- System Integrators looking for an "Industrial Grade" SV32/SV39 MMU.
 
 ## Initial Estimate of Timeline
-
-<!--
 In order to open-source the MMU/PMP we would like to accomplish the
 following tasks:
-
   - Improve Testplan and verification document. Estimated effort is low: 1 person/month.
-
   - Create UVM verification environment for standalone
     (without core) testing of the MMU/PMP. Estimated effort is
     medium-high: 6 person/month.
 
--->
-
 ## Explanation of why OpenHW should do this project
-
-<!--
   - The MMU/PMP bench allows to run and verify different MMU/PMP features stand alone without core. It makes the verification easier and faster. 
-
   - Deepen engagement of key EU research organizationn CEA with OpenHW projects
--->
 
 ## Industry landscape: description of competing, alternative, or related efforts in the industry
-
-<!--
 Hereafter some of the features of other open-source, MMU verification 
-  - 10xEngineer verification  environnement  
--->
+  - 10xEngineer verification  environnement
 
 
 ## OpenHW Members/Participants committed to participate
@@ -124,6 +92,4 @@ Tanuj-Kumar Khandelwal - Research Engineer - CEA List (Grenoble)<br>
     structure, simulation tools.
 
 ### Repository Requirements
-<!--
-  - Separate repository for the MMU/PMP Verification as it can be used for different cores.
--->
+  - Separate repository for the MMU/PMP Verification as it can be used for different cores
